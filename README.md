@@ -14,4 +14,4 @@ IN PROGRESS:
 TO DO:
 
 - Filtrar por Mes
-- Gerar gráfico das despesas (dependencia já está no projeto) *(MainAdapter)*
+- Gerar gráfico das despesas (dependencia já está no projeto) *(Fazer no MainAdapter, olhar doc https://github.com/PhilJay/MPAndroidChart)*
