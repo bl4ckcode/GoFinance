@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="carlos.gofinance.activities.ConfirmacaoActivity">
+
+    <TextView
+        android:id="@+id/txtView_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="110dp"
+        android:lineSpacingExtra="1dp"
+        android:text="Conta adicionada com sucesso!"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:id="@+id/rl_img_container"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/circle_shape_red">
+
+        <ImageView
+            android:id="@+id/imView_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_despesa_big" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/txtView_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_img_container"
+        android:layout_marginEnd="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:textColor="@color/grey"
+        tools:text="@string/confirmacao_activity_msg_conta" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/btn_pular"
+            android:layout_width="160dp"
+            android:layout_height="36dp"
+            android:layout_margin="5dp"
+            android:background="@color/white"
+            android:text="PULAR"
+            android:textColor="@color/circle_shape_red" />
+
+
+        <Button
+            android:id="@+id/btn_continuar"
+            android:layout_width="160dp"
+            android:layout_height="36dp"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="5dp"
+            android:background="@drawable/rounded_shape_red"
+            android:text="CONTINUAR"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+</RelativeLayout>

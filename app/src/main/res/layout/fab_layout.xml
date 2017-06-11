@@ -1,0 +1,92 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--TextView
+        android:id="@+id/nova_conta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/rounded_shape"
+        android:textColor="@color/white"
+        tools:text="Nova Conta" /-->
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_criar_conta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:elevation="0dp"
+        android:src="@drawable/ic_conta_black"
+        android:visibility="invisible"
+        android:labelFor="@+id/nova_conta"
+        app:backgroundTint="@color/white"
+        app:fabSize="mini" />
+
+    <!--TextView
+        android:id="@+id/novo_cartao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/rounded_shape"
+        android:textColor="@color/white"
+        tools:text="Novo Cartao" /-->
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_criar_cartao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:labelFor="@+id/novo_cartao"
+        android:src="@drawable/ic_cartao_black"
+        android:visibility="invisible"
+        app:backgroundTint="@color/white"
+        app:fabSize="mini" />
+
+
+    <!--TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/rounded_shape"
+        android:textColor="@color/white"
+        tools:text="Nova Despesa" /-->
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_criar_despesa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@drawable/ic_despesa_black"
+        android:visibility="invisible"
+        app:backgroundTint="@color/white"
+        app:fabSize="mini" />
+
+    <!--TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/rounded_shape"
+        android:textColor="@color/white"
+        tools:text="Nova carteira" /-->
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_criar_carteira"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@drawable/ic_carteira_black"
+        android:visibility="invisible"
+        app:backgroundTint="@color/white"
+        app:fabSize="mini" />
+</FrameLayout>

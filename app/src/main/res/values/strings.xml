@@ -1,0 +1,87 @@
+<resources>
+    <string name="app_name">GoFinance</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="criar_activity_conta">Criar Conta</string>
+    <string name="criar_activity_cartao">Criar Cartão</string>
+    <string name="criar_activity_despesa">Criar Despesa</string>
+    <string name="criar_activity_carteira">Criar Carteira</string>
+
+    <string name="confirmacao_activity_msg_conta">Para ver sua conta adicionada vá para tela inicial ou se quiser ver detalhes de sua conta vá no menu Contas e selecione a(s) conta(s) desejada(s).</string>
+    <string name="confirmacao_activity_msg_cartao">Para ver seu cartão adicionado vá para tela inicial ou se quiser ver detalhes de seu cartão vá no menu Cartões e selecione o(s) cartão(ões) desejado(s).</string>
+    <string name="confirmacao_activity_msg_despesa">Para ver sua despesa adicionada vá para tela inicial ou se quiser ver detalhes de sua despesa vá no menu Despesa e selecione a(s) despesa(s) desejada(s).</string>
+    <string name="confirmacao_activity_msg_receita">Para ver sua receita adicionada vá para tela inicial ou se quiser ver detalhes de sua receita vá no menu Receita e selecione a(s) receita(s) desejada(s).</string>
+    <string name="confirmacao_activity_title_cartao">Cartão adicionado com sucesso!</string>
+    <string name="confirmacao_activity_title_despesa">Despesa adicionada com sucesso!</string>
+    <string name="confirmacao_activity_title_receita">Receita adicionada com sucesso!</string>
+
+    <string-array name="tipo_despesa_array">
+        <item>Lazer</item>
+        <item>Loja</item>
+        <item>Supermercado</item>
+        <item>Restaurante</item>
+        <item>Refeicao</item>
+        <item>Animal</item>
+        <item>Carro</item>
+        <item>Saude</item>
+        <item>Bebida</item>
+        <item>Outro</item>
+    </string-array>
+
+    <string-array name="tipo_receita_array">
+        <item>Salário</item>
+        <item>Autônomo</item>
+        <item>Presente</item>
+        <item>Outro</item>
+    </string-array>
+
+    <string-array name="tipo_conta_array">
+        <item>Conta-Corrente</item>
+        <item>Conta-Poupança</item>
+        <item>Conta-Salário</item>
+    </string-array>
+
+    <string-array name="tipo_cartao_array">
+        <item>Crédito</item>
+        <item>Débito</item>
+    </string-array>
+
+    <string-array name="cor_array">
+        <item>Roxo</item>
+        <item>Vermelho</item>
+        <item>Azul</item>
+        <item>Rosa</item>
+        <item>Amarelo</item>
+        <item>Marrom</item>
+        <item>Preto</item>
+        <item>Cinza</item>
+        <item>Verde</item>
+    </string-array>
+
+    <string-array name="banco_array">
+        <item>Caixa Econômica Federal</item>
+        <item>Banco do Brasil</item>
+        <item>Banco Nacional de Desenvolvimento Econômico e Social</item>
+        <item>Banco Citibank</item>
+        <item>Banco Intermedium</item>
+        <item>Itaú Unibanco</item>
+        <item>Banco Mercantil do Brasil</item>
+        <item>Banco Santander</item>
+        <item>Bradesco</item>
+        <item>Outro</item>
+    </string-array>
+
+    <string-array name="cartao_array">
+        <item>Visa</item>
+        <item>Mastercard</item>
+        <item>American Express</item>
+        <item>Elo</item>
+        <item>Sodexo</item>
+        <item>Ticket Alimentação</item>
+        <item>Outro</item>
+    </string-array>
+</resources>

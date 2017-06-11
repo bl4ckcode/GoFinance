@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="toolbar_color">#2D9CDB</color>
+    <color name="circle_shape_red">#EB5757</color>
+    <color name="fab_color">#F2C94C</color>
+    <color name="fab_text_color">#333333</color>
+    <color name="grey_background">#E5E5E5</color>
+    <color name="light_text">#727272</color>
+    <color name="checkbox_color">#010101</color>
+
+    <color name="black" type="color">#000000</color>
+    <color name="grey" type="color">#B6B6B6</color>
+    <color name="white" type="color">#FFFFFF</color>
+    <color name="blue" type="color">#FF33B5E5</color>
+    <color name="purple" type="color">#FFAA66CC</color>
+    <color name="green" type="color">#FF99CC00</color>
+    <color name="orange" type="color">#FFFFBB33</color>
+    <color name="red" type="color">#EB5757</color>
+    <color name="darkblue" type="color">#FF0099CC</color>
+    <color name="darkpurple" type="color">#FF9933CC</color>
+    <color name="darkgreen" type="color">#FF669900</color>
+    <color name="darkorange" type="color">#FFFF8800</color>
+    <color name="darkred" type="color">#FFCC0000</color>
+    <color name="pink" type="color">#FF6EC7</color>
+    <color name="brown" type="color">#5C4033</color>
+    <color name="yellow" type="color">#D9D919</color>
+</resources>
