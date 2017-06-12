@@ -184,6 +184,7 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
 
+        /*
         if (id == R.id.nav_contas) {
             Intent intent = new Intent(this, ListaActivity.class);
             intent.putExtra(CONST_LISTA_CONTAS, contas);
@@ -200,7 +201,7 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(this, ListaActivity.class);
             intent.putExtra(CONST_LISTA_RECEITAS, despesas);
             startActivity(intent);
-        }
+        }*/
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         assert drawer != null;
@@ -219,9 +220,17 @@ public class MainActivity extends AppCompatActivity
                 mainFragment.atualizarListaCartoes(Utility.obterCartoes(this));
             } else if(requestCode == REQUEST_CRIAR_DESPESA) {
                 despesas = Utility.obterDespesas(this);
+                contas = Utility.obterContas(this);
+                cartoes = Utility.obterCartoes(this);
+                mainFragment.atualizarListaContas(contas);
+                mainFragment.atualizarListaCartoes(Utility.obterCartoes(this));
                 mainFragment.atualizarListaDespesas(Utility.obterDespesas(this));
             } else {
                 receitas = Utility.obterReceitas(this);
+                contas = Utility.obterContas(this);
+                cartoes = Utility.obterCartoes(this);
+                mainFragment.atualizarListaContas(contas);
+                mainFragment.atualizarListaCartoes(Utility.obterCartoes(this));
                 mainFragment.atualizarListaReceitas(Utility.obterReceitas(this));
             }
         }

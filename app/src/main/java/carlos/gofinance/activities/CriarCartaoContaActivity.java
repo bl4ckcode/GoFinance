@@ -2,12 +2,9 @@ package carlos.gofinance.activities;
 
 import android.content.ContentValues;
 import android.content.Intent;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,8 +24,6 @@ public class CriarCartaoContaActivity extends AppCompatActivity {
     public static String REQUEST_CONFIRMACAO_CONTA = "CONTA";
     public static String REQUEST_CONFIRMACAO_CARTAO = "CARTAO";
 
-    private RelativeLayout rlCor;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +32,7 @@ public class CriarCartaoContaActivity extends AppCompatActivity {
         final Bundle extras = getIntent().getExtras();
         final boolean isCartao = extras != null;
 
-        rlCor = (RelativeLayout) findViewById(R.id.rl_cor);
+        RelativeLayout rlCor = (RelativeLayout) findViewById(R.id.rl_cor);
         assert rlCor != null;
 
         ArrayAdapter<CharSequence> adapter;

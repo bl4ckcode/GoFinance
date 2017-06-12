@@ -76,6 +76,16 @@ public class CriarReceitaDespesaActivity extends AppCompatActivity implements Da
         assert checkBox != null;
 
         if (isReceita) {
+            Button btnVoltar = (Button) findViewById(R.id.btn_voltar);
+            assert btnVoltar != null;
+            btnVoltar.setTextColor(recursos.getColor(R.color.toolbar_color, null));
+            btnVoltar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    finish();
+                }
+            });
+
             rlContinuar.getBackground().setColorFilter(recursos.getColor(R.color.toolbar_color, null), PorterDuff.Mode.SRC_ATOP);
             rlCor.getBackground().setColorFilter(recursos.getColor(R.color.toolbar_color, null), PorterDuff.Mode.SRC_ATOP);
             checkBox.setVisibility(View.GONE);
@@ -86,6 +96,15 @@ public class CriarReceitaDespesaActivity extends AppCompatActivity implements Da
             assert spinnerTipo != null;
             spinnerTipo.setAdapter(adapter);
         } else {
+            Button btnVoltar = (Button) findViewById(R.id.btn_voltar);
+            assert btnVoltar != null;
+            btnVoltar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    finish();
+                }
+            });
+
             adapter = ArrayAdapter.createFromResource(this,
                     R.array.tipo_despesa_array, android.R.layout.simple_spinner_item);
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -114,15 +133,6 @@ public class CriarReceitaDespesaActivity extends AppCompatActivity implements Da
         assert spinnerConta != null;
         spinnerConta.setAdapter(adapterConta);
 
-        Button btnVoltar = (Button) findViewById(R.id.btn_voltar);
-        assert btnVoltar != null;
-        btnVoltar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-
         rlContinuar.setOnClickListener(new View.OnClickListener() {
             @SuppressWarnings("ConstantConditions")
             @Override
@@ -133,7 +143,8 @@ public class CriarReceitaDespesaActivity extends AppCompatActivity implements Da
                 else {
                     ContentValues contentValues = new ContentValues();
                     if (isReceita) {
-                        contentValues.put(Colunas.VALOR_RECEITA, Double.parseDouble(edtValor.getText().toString()));
+                        double valor = Double.parseDouble(edtValor.getText().toString());
+                        contentValues.put(Colunas.VALOR_RECEITA, valor);
                         contentValues.put(Colunas.DATA_RECEITA, txtViewDataDesc.getText().toString());
                         contentValues.put(Colunas.FONTE_RECEITA,
                                 TipoReceita.valueOf(spinnerTipo.getSelectedItemPosition()).getIdReceita());
@@ -143,7 +154,21 @@ public class CriarReceitaDespesaActivity extends AppCompatActivity implements Da
                         boolean found = false;
                         for (Conta conta : contas) {
                             if (conta.getNomeBanco().contains(selected)) {
-                                contentValues.put(Colunas.ID_CONTA, conta.getIdConta());
+                                int idConta = conta.getIdConta();
+                                double novoValor = conta.getValorConta() + valor;
+                                contentValues.put(Colunas.ID_CONTA, idConta);
+                                Utility.insert(Constantes.TABLE_RECEITA, contentValues, CriarReceitaDespesaActivity.this);
+
+                                ContentValues contentValuesConta = new ContentValues();
+                                contentValuesConta.put(Colunas.ID_CONTA, idConta);
+                                contentValuesConta.put(Colunas.VALOR_CONTA, novoValor);
+                                contentValuesConta.put(Colunas.TIPO_CONTA, conta.getTipoConta());
+                                contentValuesConta.put(Colunas.COR_CONTA, conta.getCorConta());
+                                contentValuesConta.put(Colunas.NOME_BANCO, conta.getNomeBanco());
+
+                                Utility.update(Constantes.TABLE_CONTA, contentValuesConta, Colunas.ID_CONTA + " = " + idConta,
+                                        CriarReceitaDespesaActivity.this);
+
                                 found = true;
                                 break;
                             }
@@ -152,12 +177,23 @@ public class CriarReceitaDespesaActivity extends AppCompatActivity implements Da
                         if (!found)
                             for (Cartao cartao : cartoes) {
                                 if (cartao.getBandeiraCartao().contains(selected)) {
-                                    contentValues.put(Colunas.ID_CARTAO, cartao.getIdCartao());
+                                    int idCartao = cartao.getIdCartao();
+                                    double novoValor = cartao.getValorCartao() - valor;
+                                    contentValues.put(Colunas.ID_CARTAO, idCartao);
+                                    Utility.insert(Constantes.TABLE_RECEITA, contentValues, CriarReceitaDespesaActivity.this);
+
+                                    ContentValues contentValuesCartao = new ContentValues();
+                                    contentValuesCartao.put(Colunas.ID_CARTAO, idCartao);
+                                    contentValuesCartao.put(Colunas.VALOR_CARTAO, novoValor);
+                                    contentValuesCartao.put(Colunas.TIPO_CARTAO, cartao.getTipoCartao());
+                                    contentValuesCartao.put(Colunas.COR_CARTAO, cartao.getCorCartao());
+                                    contentValuesCartao.put(Colunas.BANDEIRA_CARTAO, cartao.getBandeiraCartao());
+
+                                    Utility.update(Constantes.TABLE_CARTAO, contentValuesCartao, Colunas.ID_CARTAO + " = " + idCartao,
+                                            CriarReceitaDespesaActivity.this);
                                     break;
                                 }
                             }
-
-                        Utility.insert(Constantes.TABLE_RECEITA, contentValues, CriarReceitaDespesaActivity.this);
 
                         Intent intent = new Intent(CriarReceitaDespesaActivity.this, ConfirmacaoActivity.class);
                         intent.putExtra(REQUEST_CONFIRMACAO_RECEITA, true);
@@ -165,7 +201,8 @@ public class CriarReceitaDespesaActivity extends AppCompatActivity implements Da
                         startActivity(intent);
                         finish();
                     } else {
-                        contentValues.put(Colunas.VALOR_DESPESA, Double.parseDouble(edtValor.getText().toString()));
+                        double valor = Double.parseDouble(edtValor.getText().toString());
+                        contentValues.put(Colunas.VALOR_DESPESA, valor);
                         contentValues.put(Colunas.DATA_DESPESA, txtViewDataDesc.getText().toString());
                         contentValues.put(Colunas.TIPO_DESPESA,
                                 TipoDespesa.valueOf(spinnerTipo.getSelectedItemPosition()).getIdDespesa());
@@ -176,7 +213,21 @@ public class CriarReceitaDespesaActivity extends AppCompatActivity implements Da
                         boolean found = false;
                         for (Conta conta : contas) {
                             if (conta.getNomeBanco().contains(selected)) {
-                                contentValues.put(Colunas.ID_CONTA, conta.getIdConta());
+                                int idConta = conta.getIdConta();
+                                double novoValor = conta.getValorConta() - valor;
+                                contentValues.put(Colunas.ID_CONTA, idConta);
+                                Utility.insert(Constantes.TABLE_DESPESA, contentValues, CriarReceitaDespesaActivity.this);
+                                if (!checkBox.isSelected()) {
+                                    ContentValues contentValuesConta = new ContentValues();
+                                    contentValuesConta.put(Colunas.ID_CONTA, idConta);
+                                    contentValuesConta.put(Colunas.VALOR_CONTA, novoValor);
+                                    contentValuesConta.put(Colunas.TIPO_CONTA, conta.getTipoConta());
+                                    contentValuesConta.put(Colunas.COR_CONTA, conta.getCorConta());
+                                    contentValuesConta.put(Colunas.NOME_BANCO, conta.getNomeBanco());
+
+                                    Utility.update(Constantes.TABLE_CONTA, contentValuesConta, Colunas.ID_CONTA + " = " + idConta,
+                                            CriarReceitaDespesaActivity.this);
+                                }
                                 found = true;
                                 break;
                             }
@@ -185,12 +236,24 @@ public class CriarReceitaDespesaActivity extends AppCompatActivity implements Da
                         if (!found)
                             for (Cartao cartao : cartoes) {
                                 if (cartao.getBandeiraCartao().contains(selected)) {
-                                    contentValues.put(Colunas.ID_CARTAO, cartao.getIdCartao());
+                                    int idCartao = cartao.getIdCartao();
+                                    double novoValor = cartao.getValorCartao() - valor;
+                                    contentValues.put(Colunas.ID_CARTAO, idCartao);
+                                    Utility.insert(Constantes.TABLE_DESPESA, contentValues, CriarReceitaDespesaActivity.this);
+                                    if (!checkBox.isSelected()) {
+                                        ContentValues contentValuesCartao = new ContentValues();
+                                        contentValuesCartao.put(Colunas.ID_CARTAO, idCartao);
+                                        contentValuesCartao.put(Colunas.VALOR_CARTAO, novoValor);
+                                        contentValuesCartao.put(Colunas.TIPO_CARTAO, cartao.getTipoCartao());
+                                        contentValuesCartao.put(Colunas.COR_CARTAO, cartao.getCorCartao());
+                                        contentValuesCartao.put(Colunas.BANDEIRA_CARTAO, cartao.getBandeiraCartao());
+
+                                        Utility.update(Constantes.TABLE_CARTAO, contentValuesCartao, Colunas.ID_CARTAO + " = " + idCartao,
+                                                CriarReceitaDespesaActivity.this);
+                                    }
                                     break;
                                 }
                             }
-
-                        Utility.insert(Constantes.TABLE_DESPESA, contentValues, CriarReceitaDespesaActivity.this);
 
                         Intent intent = new Intent(CriarReceitaDespesaActivity.this, ConfirmacaoActivity.class);
                         intent.putExtra(REQUEST_CONFIRMACAO_DESPESA, true);

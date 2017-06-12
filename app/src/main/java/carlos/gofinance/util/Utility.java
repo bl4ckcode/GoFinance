@@ -31,6 +31,13 @@ public class Utility {
         database.close();
     }
 
+    public static void update(String tableName, ContentValues contentValues, String whereClause, Context context) {
+        DatabaseHelper dbHelper = new DatabaseHelper(context);
+        SQLiteDatabase database = dbHelper.getWritableDatabase();
+        Log.d("UPDATE OPERATION CODE: ", "" + database.update(tableName, contentValues, whereClause, null));
+        database.close();
+    }
+
     public static ArrayList<Conta> obterContas(Context context) {
         ArrayList<Conta> contas = new ArrayList<>();
 

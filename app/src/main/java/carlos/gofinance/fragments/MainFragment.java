@@ -102,7 +102,7 @@ public class MainFragment extends Fragment implements MainAdapter.MainAdapterIte
 
         valor = 0.0;
         for(Cartao cartao : cartoes) {
-            valor += cartao.getValorConta();
+            valor += cartao.getValorCartao();
         }
 
         dados.add(new String[]{"Cartão", cartoes.size() + "", valor + ""});
@@ -129,9 +129,9 @@ public class MainFragment extends Fragment implements MainAdapter.MainAdapterIte
     public void atualizarListaDespesas(ArrayList<Despesa> despesas) {
         double valor = 0.0;
         for(Despesa despesa : despesas) {
-            valor += despesa.getDespesaPaga();
+            valor += despesa.getvalorDespesa();
         }
-        dados.add(new String[]{"Despesa", despesas.size() + "", valor + ""});
+        dados.set(1, new String[]{"Despesa", despesas.size() + "", valor + ""});
         adapter.setDados(dados);
     }
 
@@ -140,14 +140,14 @@ public class MainFragment extends Fragment implements MainAdapter.MainAdapterIte
         for(Receita receita : receitas) {
             valor += receita.getValorReceita();
         }
-        dados.add(new String[]{"Receita", receitas.size() + "", valor + ""});
+        dados.set(2, new String[]{"Receita", receitas.size() + "", valor + ""});
         adapter.setDados(dados);
     }
 
     public void atualizarListaCartoes(ArrayList<Cartao> cartoes) {
         double valor = 0.0;
         for(Cartao cartao : cartoes) {
-            valor += cartao.getValorConta();
+            valor += cartao.getValorCartao();
         }
         dados.set(3, new String[]{"Cartão", cartoes.size() + "", valor + ""});
         adapter.setDados(dados);
